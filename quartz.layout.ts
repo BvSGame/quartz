@@ -5,32 +5,24 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [
-  ],
-  footer: Component.Footer({
+  afterBody: [],
+  footer: Component.Footer( {
     links: {
       "Official Website": "https://bvsga.me",
       GitHub: "https://github.com/BvSGame",
       YouTube: "https://www.youtube.com/@Bv.S",
     },
-  }),
+  } ),
 }
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    // Component.ConditionalRender({
+    // Component.ConditionalRender( {
     //   component: Component.Breadcrumbs(),
-    //   condition: (page) => page.fileData.slug !== "index",
-    // }),
-    Component.ArticleTitle(),
-    Component.TagList(),
-    Component.ContentMeta(),
-  ],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
+    //   condition: ( page ) => page.fileData.slug !== "index",
+    // } ),
+    Component.Flex( {
       components: [
         {
           Component: Component.Search(),
@@ -39,7 +31,14 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
         { Component: Component.ReaderMode() },
       ],
-    }),
+    } ),
+    Component.ArticleTitle(),
+    Component.TagList(),
+    Component.ContentMeta(),
+  ],
+  left: [
+    Component.PageTitle(),
+    // Component.MobileOnly( Component.Spacer() ),
     // Component.Explorer(),
   ],
   right: [
@@ -51,19 +50,24 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
+  beforeBody: [
+    Component.Flex( {
       components: [
         {
           Component: Component.Search(),
           grow: true,
         },
         { Component: Component.Darkmode() },
+        { Component: Component.ReaderMode() },
       ],
-    }),
+    } ),
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
+  left: [
+    Component.PageTitle(),
+    // Component.MobileOnly( Component.Spacer() ),
     // Component.Explorer(),
   ],
   right: [],
