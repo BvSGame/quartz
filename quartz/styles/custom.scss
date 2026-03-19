@@ -5,12 +5,16 @@
 .article-title-container {
   margin-bottom: 1.5rem;
 
-  .contributors {
+  .frontmatter-property {
     font-size: 0.85rem;
     color: var(--gray);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    vertical-align: middle;
     gap: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid var(--gray);
+    padding: 0.25rem 0.5rem;
 
     .label {
       font-weight: 600;
@@ -19,19 +23,25 @@
       font-size: 0.75rem;
     }
 
-    .contributor-list {
+    .value {
+      font-weight: bold;
+    }
+
+    .list {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
       padding: 0;
       margin: 0;
       gap: 0.4rem;
+      font-weight: bold;
 
       li {
         background: var(--lightgray);
-        padding: 0.1rem 0.5rem;
+        padding: 0.2rem 0.4rem;
         border-radius: 4px;
         color: var(--dark);
+        line-height: 1rem;
       }
     }
   }
