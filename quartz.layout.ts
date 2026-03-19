@@ -22,6 +22,12 @@ export const defaultContentPageLayout: PageLayout = {
     //   component: Component.Breadcrumbs(),
     //   condition: ( page ) => page.fileData.slug !== "index",
     // } ),
+    Component.ArticleTitle(),
+    Component.TagList(),
+    Component.ContentMeta(),
+  ],
+  left: [
+    Component.PageTitle(),
     Component.Flex( {
       components: [
         {
@@ -32,14 +38,17 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     } ),
-    Component.ArticleTitle(),
-    Component.TagList(),
-    Component.ContentMeta(),
-  ],
-  left: [
-    Component.PageTitle(),
-    // Component.MobileOnly( Component.Spacer() ),
-    // Component.Explorer(),
+    Component.Explorer( {
+      folderDefaultState: "open",
+      filterFn: ( node ) => {
+        return node.slug?.startsWith( "tags/" )
+      },
+      mapFn: ( node ) => {
+        if ( node.displayName.startsWith( "Tag: " ) ) {
+          node.displayName = node.displayName.replace( "Tag: ", "" )
+        }
+      },
+    } ),
   ],
   right: [
     Component.Graph(),
@@ -51,6 +60,12 @@ export const defaultContentPageLayout: PageLayout = {
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
+  left: [
+    Component.PageTitle(),
     Component.Flex( {
       components: [
         {
@@ -61,14 +76,17 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     } ),
-    Component.Breadcrumbs(),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-  ],
-  left: [
-    Component.PageTitle(),
-    // Component.MobileOnly( Component.Spacer() ),
-    // Component.Explorer(),
+    Component.Explorer( {
+      folderDefaultState: "open",
+      filterFn: ( node ) => {
+        return node.slug?.startsWith( "tags/" )
+      },
+      mapFn: ( node ) => {
+        if ( node.displayName.startsWith( "Tag: " ) ) {
+          node.displayName = node.displayName.replace( "Tag: ", "" )
+        }
+      },
+    } ),
   ],
   right: [],
 }

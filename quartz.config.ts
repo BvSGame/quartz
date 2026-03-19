@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "en-US",
     baseUrl: "bvsgame.github.io/quartz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: [ "private", "templates", ".obsidian" ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -54,34 +54,39 @@ const config: QuartzConfig = {
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
-      Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
-      }),
-      Plugin.SyntaxHighlighting({
+      Plugin.CreatedModifiedDate( {
+        priority: [ "frontmatter", "git", "filesystem" ],
+      } ),
+      Plugin.SyntaxHighlighting( {
         theme: {
           light: "github-light",
           dark: "github-dark",
         },
         keepBackground: false,
-      }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      } ),
+      Plugin.ObsidianFlavoredMarkdown( {
+        enableInHtmlEmbed: true,
+        enableVideoEmbed: true,
+        enableYouTubeEmbed: true,
+        parseBlockReferences: true,
+      } ),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.CrawlLinks( { markdownLinkResolution: "shortest" } ),
       Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
+      Plugin.Latex( { renderEngine: "katex" } ),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [ Plugin.RemoveDrafts() ],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
-      Plugin.ContentIndex({
+      Plugin.ContentIndex( {
         enableSiteMap: true,
         enableRSS: true,
-      }),
+      } ),
       Plugin.Assets(),
       Plugin.Static(),
       // Plugin.Favicon(),
