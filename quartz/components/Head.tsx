@@ -74,9 +74,19 @@ export default (() => {
           </>
         )}
 
-        {cfg.baseUrl && (
+        {!socialUrl.endsWith( '/index' ) && (
           <>
             <link rel="canonical" href={socialUrl} />
+          </>
+        )}
+        {socialUrl.endsWith( '/index' ) && (
+          <>
+            <link rel="canonical" href={'https://' + cfg.baseUrl} />
+          </>
+        )}
+
+        {cfg.baseUrl && (
+          <>
             <meta property="twitter:domain" content={cfg.baseUrl}></meta>
             <meta property="og:url" content={socialUrl}></meta>
             <meta property="twitter:url" content={socialUrl}></meta>
