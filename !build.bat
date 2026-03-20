@@ -1,0 +1,2 @@
+:: This script builds Quartz into "public" directory on a local machine. It does nothing remotely.
+npx quartz build
