@@ -1,6 +1,34 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
+import { writeFile, mkdir } from "fs/promises"
+import { existsSync } from "fs"
+import path from "path"
+
+const htaccess = () => ( { name: "htaccess", async emit() {
+  const outputDir = "public";
+  const filePath = path.join( outputDir, ".htaccess" );
+
+  const content = `
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+  `;
+
+  if ( !existsSync( outputDir ) ) {
+    await mkdir( outputDir, { recursive: true } );
+  }
+
+  await writeFile( filePath, content, "utf-8" );
+
+  return [];
+} } )
+
 /**
  * Quartz 4 Configuration
  *
@@ -72,12 +100,13 @@ const config: QuartzConfig = {
       } ),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks( { markdownLinkResolution: "shortest" } ),
+      Plugin.CrawlLinks( { markdownLinkResolution: "relative" } ),
       Plugin.Description(),
       Plugin.Latex( { renderEngine: "katex" } ),
     ],
     filters: [ Plugin.RemoveDrafts() ],
     emitters: [
+      htaccess(),
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
