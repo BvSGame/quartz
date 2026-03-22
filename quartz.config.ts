@@ -40,7 +40,10 @@ const config: QuartzConfig = {
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: {
+      provider: "google",
+      tagId: 'G-P9EDWGZ47V',
+    },
     locale: "en-US",
     baseUrl: "quartz.bvsga.me",
     ignorePatterns: [ "private", "templates", ".obsidian" ],
