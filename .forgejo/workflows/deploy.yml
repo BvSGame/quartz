@@ -28,4 +28,5 @@ jobs:
         uses: https://codeberg.org/actions/forgejo-pages-action@v1
         with:
           branch: pages
-          folder: public # Quartz output folder
+          folder: public # Quartz output directory
+          force:  true   # Overwrite 'pages' branch with the fresh build
