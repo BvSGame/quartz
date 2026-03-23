@@ -1,0 +1,31 @@
+name: Deploy Quartz site to Codeberg Pages
+
+on:
+  push:
+    branches:
+      - v4
+
+jobs:
+  build:
+    runs-on: docker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for git info
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install & Build
+        run: |
+          npm install
+          npx quartz build
+
+      - name: Deploy to Pages Branch
+        uses: https://codeberg.org/actions/forgejo-pages-action@v1
+        with:
+          branch: pages
+          folder: public # Quartz output folder
