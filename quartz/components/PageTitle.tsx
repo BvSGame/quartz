@@ -2,7 +2,7 @@ import { pathToRoot } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { i18n } from "../i18n"
 
-const PageTitle: QuartzComponent = ( { fileData, cfg } : QuartzComponentProps) => {
+const PageTitle: QuartzComponent = ( { fileData, cfg }: QuartzComponentProps) => {
   const title = cfg?.pageTitle ?? i18n( cfg.locale ).propertyDefaults.title
   const baseDir = pathToRoot( fileData.slug! )
   return (
