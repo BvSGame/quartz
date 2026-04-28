@@ -1,6 +1,99 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+
+* {
+  box-sizing: border-box;
+}
+.bvs_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: #000000;
+  overflow: hidden;
+  background-image: radial-gradient(circle at bottom, rgb(38, 138, 238), #003888, #000000);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  display: block;
+  transition: opacity .4s;
+  z-index: -1;
+  .stars_wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    transition: opacity 1.9s;
+    .star {
+      position: absolute;
+      top: 0; left: 0;
+      height: .1em;
+      width: .1em;
+      background-image: radial-gradient(#ffffff88, #ffffff22, #ffffff00);
+      box-shadow:
+        0 0 0.25em rgb(38, 138, 238),
+        0 0 0.5em  rgb(38, 138, 238),
+        0 0 1em    rgb(38, 138, 238);
+      border-radius: 500em;
+      margin: 0;
+      animation: star 5s infinite, star_appears 5s 1;
+    }
+  }
+  .stars_wrapper.fading {
+    opacity: 0;
+  }
+  .light_overlay {
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    mix-blend-mode: plus-lighter;
+    background-color: rgba( 255, 255, 255, .8 );
+  }
+}
+@keyframes star {
+  50% {opacity: .4;}
+}
+@keyframes star_appears {
+  0% {opacity: 0; margin-top: 3em;}
+}
+
+
+#quartz-root .center {
+  background-color: rgba( 0, 0, 0, .4 );
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 5rem 0 0;
+  .page-header {
+    margin-top: 0;
+  }
+}
+html[ saved-theme="light" ] {
+  .bvs_background > .light_overlay {
+    display: block;
+  }
+  #quartz-root {
+    .center {
+      background-color: rgba( 255, 255, 255, .4 );
+    }
+  }
+}
+
+
+.page > #quartz-body .sidebar {
+  padding: 1.5rem;
+}
+.page > #quartz-body .sidebar.left {
+  padding-top: 0 !important;
+}
+@media ( max-width: 800px ) {
+  .page > #quartz-body .sidebar.left {
+    position: initial !important;
+  }
+}
+
 
 .article-title-container {
   margin-bottom: 1.5rem;

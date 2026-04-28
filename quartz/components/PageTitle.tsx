@@ -7,7 +7,7 @@ const PageTitle: QuartzComponent = ( { fileData, cfg } : QuartzComponentProps ) 
   const baseDir = pathToRoot( fileData.slug! )
   return (
     <a href={ baseDir }>
-      <img src="https://dn710601.ca.archive.org/0/items/bvsgame/brand/logos/bvs_logo_full_2023.png" alt={ `"${ title }"` } />
+      <img src="https://media.bvsga.me/brand/logos/bvs_wiki_logo_600.png" alt="Logo of Bombs vs. Sleepwalkers Wiki" title="Go to home page of Bombs vs. Sleepwalkers Wiki" />
     </a>
   )
 }

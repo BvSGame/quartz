@@ -11,6 +11,8 @@ import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { styleText } from "util"
 
+let globalBaseDir: string;
+
 interface RenderComponents {
   head: QuartzComponent
   header: QuartzComponent[]
@@ -27,6 +29,7 @@ export function pageResources(
   baseDir: FullSlug | RelativeURL,
   staticResources: StaticResources,
 ): StaticResources {
+  globalBaseDir = baseDir;
   const contentIndexPath = joinSegments(baseDir, "static/contentIndex.json")
   const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json())`
 
@@ -263,6 +266,10 @@ export function renderPage(
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
       <body data-slug={slug}>
+        <div className="bvs_background">
+          <div className="stars_wrapper"></div>
+          <div className="light_overlay"></div>
+        </div>
         <div id="quartz-root" class="page">
           <Body {...componentData}>
             {LeftComponent}
@@ -280,7 +287,6 @@ export function renderPage(
                 </div>
               </div>
               <Content {...componentData} />
-              <hr />
               <div class="page-footer">
                 {afterBody.map((BodyComponent) => (
                   <BodyComponent {...componentData} />
@@ -292,6 +298,7 @@ export function renderPage(
           </Body>
         </div>
       </body>
+      <script type="module" src={ joinSegments( globalBaseDir, 'static/custom.js' ) }></script>
       {pageResources.js
         .filter((resource) => resource.loadTime === "afterDOMReady")
         .map((res) => JSResourceToScriptElement(res, true))}

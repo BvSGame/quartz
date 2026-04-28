@@ -1,0 +1,89 @@
+const config = {
+  backgroundSelector: document.querySelector( '.bvs_background' ),
+  starsWrapperSelector: document.querySelector( '.bvs_background > .stars_wrapper' ),
+  background: {
+    stars: {
+      versionMultiplier: 10,
+      mainAppearanceSpeed: 500,
+    },
+  },
+};
+
+
+function startApp() {
+  const version_MilestoneStageDay = 7;
+  fire( version_MilestoneStageDay );
+}
+
+
+if (document.readyState === 'complete')
+  startApp();
+else {
+  document.addEventListener('readystatechange', () => {
+    if (document.readyState === 'complete')
+      startApp();
+  });
+}
+
+
+function fire( versionNumber ) {
+  config.backgroundSelector.classList.remove( 'loading' );
+  addStar(
+    parseInt( versionNumber ) * config.background.stars.versionMultiplier
+  );
+  rearrangeStars();
+}
+
+
+let curentStar = 0;
+function addStar(amountOfStars) {
+  setTimeout(() => {
+    if (curentStar < amountOfStars) {
+      const top  = Math.random() * 100;
+      const left = Math.random() * 100;
+      const size = Math.random() * .2;
+      const blinkRate = 1.5 + Math.random() * 3.5;
+
+      const star = document.createElement('div');
+
+      const starWrapper = config.starsWrapperSelector;
+      starWrapper.appendChild(star);
+
+      star.classList.add('star');
+      star.style.top  = `${top}%`;
+      star.style.left = `${left}%`;
+      star.style.height = `${size}em`;
+      star.style.width = `${size}em`;
+      star.style.animation = `star ${blinkRate}s infinite, star_appears 5s 1`;
+
+      addStar(amountOfStars);
+      curentStar++;
+    }
+  }, config.background.stars.mainAppearanceSpeed * Math.random() );
+}
+
+
+function rearrangeStars() {
+  setInterval(() => {
+    const allStars = document.querySelectorAll('.star');
+    const wrapper = config.starsWrapperSelector;
+
+    allStars.forEach(star => {
+      const top  = Math.random() * 100;
+      const left = Math.random() * 100;
+      const size = Math.random() * .2;
+      const blinkRate = 1.5 + Math.random() * 3.5;
+
+      wrapper.classList.add('fading');
+
+      setTimeout(() => {
+        wrapper.classList.remove('fading');
+        star.style.top  = `${top}%`;
+        star.style.left = `${left}%`;
+        star.style.height = `${size}em`;
+        star.style.width = `${size}em`;
+        star.style.animation = `star ${blinkRate}s infinite, star_appears 5s 1`;
+      }, 1900);
+    });
+  }, 13800);
+}
