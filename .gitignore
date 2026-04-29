@@ -1,11 +1,7 @@
 /content/_Templates/
-**/.gitignore
 **/node_modules/
-**/.obsidian/
-/.pnp.cjs
-/.pnp.loader.mjs
-/prof/
 /public/
 /quartz/.quartz-cache/
+**/.stfolder/
+**/.stignore
 **/.vscode/
-**/.yarn/
