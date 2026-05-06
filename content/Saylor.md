@@ -2,13 +2,13 @@
 tags:
   - Characters
   - 100Words
-version: 0.1.504
+version: 0.1.514
 ---
 **Saylor** is a [protagonist](Protagonist.md) of [*Bombs vs. Sleepwalkers* franchise](Bombs%20vs.%20Sleepwalkers%20(franchise).md).
 
 Saylor as a character is created by [liledix⁴](liledix4.md), with ideas pitched by [ZaBlazzingZephyrus](blazingzephyr.md).
 
-| Information                       | Value                                                                                                                                 |
+| The What                          | The Details                                                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | Birth date                        | August 30, 2003                                                                                                                       |
 | Age                               | 21 (as of 2024)                                                                                                                       |

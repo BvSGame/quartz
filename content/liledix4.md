@@ -8,7 +8,7 @@ version: 0.1.514
 
 When there are no people who are able to contribute to the project (they may be busy, or the project itself is under-advertised), liledix⁴ does the maintenance and content creation alone, whenever it’s possible.
 
-| Info                          | Value                                                                                  |
+| The What                      | The Details                                                                            |
 | ----------------------------- | -------------------------------------------------------------------------------------- |
 | Name                          | liledix⁴                                                                               |
 | Pronounciation of the name    | lil-ediks-four                                                                         |
@@ -20,11 +20,15 @@ When there are no people who are able to contribute to the project (they may be 
 
 ## Roles in the project
 
-Primarily, liledix⁴ is a composer. #2do 
+Primarily, liledix⁴ is a composer.
+
+- [ ] Mention more roles of liledix⁴ in the *Bombs vs. Sleepwalkers* project.
 
 ## Skills
 
-liledix⁴’s skillset is changing constantly and regularly. #2do 
+liledix⁴’s skillset is changing constantly and regularly.
+
+- [ ] List the skills liledix⁴ has.
 
 ## Resources and how to reach out
 
